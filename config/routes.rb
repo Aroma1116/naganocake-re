@@ -8,10 +8,15 @@ scope module: :public do
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'customers/my_page' => 'customers#show'
+  get 'customers/infomation/edit' => 'customers#edit'
+  patch 'customers/infomation' => 'customers#update'
+  get 'customers/unsubscribe' => 'customers#unsubscribe'
+  patch 'customers/withdraw' => 'customers#withdraw'
 end
 
 namespace :admin do
   root to: 'homes#top'
+  resources :customers
 end
   devise_for :admin,skip: [:registrations, :passwords] , controllers: {
   sessions: "admin/sessions"
