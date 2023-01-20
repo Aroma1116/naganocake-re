@@ -12,6 +12,8 @@ end
 
 namespace :admin do
   root to: 'homes#top'
+  resources :genres, only: [:index, :create, :edit, :update]
+  resources :items
 end
   devise_for :admin,skip: [:registrations, :passwords] , controllers: {
   sessions: "admin/sessions"
