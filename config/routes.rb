@@ -12,6 +12,7 @@ scope module: :public do
   patch 'customers/infomation' => 'customers#update'
   get 'customers/unsubscribe' => 'customers#unsubscribe'
   patch 'customers/withdraw' => 'customers#withdraw'
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 end
 
 namespace :admin do
