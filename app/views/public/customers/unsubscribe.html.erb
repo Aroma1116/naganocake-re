@@ -1,0 +1,7 @@
+本当に退会しますか？
+
+退会すると、会員登録情報やこれまでの購入履歴が閲覧できなくなります。
+退会する場合は、「退会する」をクリックしてください。
+
+<%= link_to "退会しない", customers_my_page_path, class: "btn btn-primary" %>
+<%= link_to "退会する", customers_withdraw_path, method: :patch, data: { confirm: "【確認】退会してもよろしいですか？" }, class: "btn btn-danger" %>
