@@ -8,6 +8,9 @@ scope module: :public do
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'customers/my_page' => 'customers#show'
+  resources :items, only: [:index, :show]
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+  resources :cart_items, only: [:index, :create, :update, :destroy]
 end
 
 namespace :admin do

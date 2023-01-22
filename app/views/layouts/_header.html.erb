@@ -12,10 +12,10 @@
             <%= link_to ' マイページ', customers_my_page_path,class: 'glyphicon glyphicon-home home' %>
           </li>
           <li>
-            <%#= link_to ' 商品一覧',users_path,class: 'glyphicon glyphicon-user users' %>
+            <%= link_to ' 商品一覧',items_path,class: 'glyphicon glyphicon-user users' %>
           </li>
           <li>
-            <%#= link_to ' カート',books_path ,class: 'glyphicon glyphicon-book books'%>
+            <%= link_to ' カート',cart_items_path ,class: 'glyphicon glyphicon-book books'%>
           </li>
           <li>
             <%= link_to ' ログアウト', destroy_customer_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %>
@@ -28,7 +28,7 @@
           <%= link_to ' ログアウト', destroy_admin_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %>
         <% else %>
           <li><%= link_to ' About',about_path,class: 'glyphicon glyphicon-home home' %></li>
-          <li><%= link_to ' 商品一覧',admin_items_path,class: 'glyphicon glyphicon-link about' %></li>
+          <li><%= link_to ' 商品一覧',items_path,class: 'glyphicon glyphicon-link about' %></li>
           <li><%= link_to ' 新規登録', new_customer_registration_path,class: 'glyphicon glyphicon-edit sign_up' %></li>
           <li><%= link_to ' ログイン', new_customer_session_path ,class: 'glyphicon glyphicon-log-in sign_in'%></li>
         <% end %>
