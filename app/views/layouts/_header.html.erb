@@ -25,7 +25,11 @@
           <li><%= link_to '会員一覧',admin_customers_path,class: 'glyphicon glyphicon-link about' %></li>
           <li><%= link_to ' 注文履歴一覧', admin_orders_path,class: 'glyphicon glyphicon-edit sign_up' %></li>
           <li><%= link_to ' ジャンル一覧', admin_genres_path ,class: 'glyphicon glyphicon-log-in sign_in'%></li>
-          <%= link_to ' ログアウト', destroy_admin_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %>
+          <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %></li>
+          <%= form_with url:admin_items_search_path, method: :get do |f| %>
+            <%= f.text_field :search %>
+            <% f.submit %>
+          <% end %>
         <% else %>
           <li><%= link_to ' About',about_path,class: 'glyphicon glyphicon-home home' %></li>
           <li><%= link_to ' 商品一覧',items_path,class: 'glyphicon glyphicon-link about' %></li>
