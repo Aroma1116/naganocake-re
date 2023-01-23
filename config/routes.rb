@@ -8,9 +8,17 @@ scope module: :public do
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'customers/my_page' => 'customers#show'
+  get 'customers/information/edit' => 'customers#edit'
+  patch 'customers/information' => 'customers#update'
+  get 'customers/unsubscribe' => 'customers#unsubscribe'
+  patch 'customers/withdraw' => 'customers#withdraw'
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   resources :items, only: [:index, :show]
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :create, :update, :destroy]
+  post 'orders/confirm' => 'orders#confirm'
+  get 'orders/thanks' => 'orders#thanks'
+  resources :orders, only: [:new, :create, :index, :show]
 end
 
 namespace :admin do
@@ -18,6 +26,8 @@ namespace :admin do
   resources :genres, only: [:index, :create, :edit, :update]
   resources :items
   resources :customers
+  resources :orders, only: [:index, :show, :update]
+  resources :order_details, only: [:update]
 end
   devise_for :admin,skip: [:registrations, :passwords] , controllers: {
   sessions: "admin/sessions"
