@@ -1,5 +1,12 @@
 <h3>商品一覧</h3>
 
+<h4>ジャンル検索</h4>
+<% @genres.each do |genre| %>
+  <%= link_to items_path(id: genre.id) do %>
+    <%= genre.name %>
+  <% end %>
+<% end %>
+
 <% @items.each do |item| %>
   <%= link_to item_path(item) do %>
     <%= image_tag item.get_image(200,200) %>
