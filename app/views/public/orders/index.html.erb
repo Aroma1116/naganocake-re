@@ -13,7 +13,7 @@
   <tbody>
     <% @orders.each do |order| %>
     <tr>
-      <td><%= order.created_at %></td>
+      <td><%= order.created_at.to_s(:datetime_jp) %></td>
       <td><%= order.address_display %></td>
       <td>
         <% order.order_details.each do |order_detail| %>

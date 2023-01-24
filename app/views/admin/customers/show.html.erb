@@ -1,0 +1,46 @@
+<h3><%= @customer.last_name %>さんの登録情報</h3>
+<%= flash[:notice] %>
+<table class="table">
+  <tbody>
+    <tr>
+      <td class="table-secondary">会員ID</td>
+      <td><%= @customer.id %></td>
+    </tr>
+    <tr>
+      <td class="table-secondary">氏名</td>
+      <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+    </tr>
+    <tr>
+      <td class="table-secondary">カナ</td>
+      <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+    </tr>
+    <tr>
+      <td class="table-secondary">郵便番号</td>
+      <td><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+      <td class="table-secondary">住所</td>
+      <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <td class="table-secondary">電話番号</td>
+      <td><%= @customer.telephone_number %></td>
+    </tr>
+    <tr>
+      <td class="table-secondary">メールアドレス</td>
+      <td><%= @customer.email %></td>
+    </tr>
+    <tr>
+      <td class="table-secondary">ステータス</td>
+      <td>
+        <% if @customer.is_active == true %>
+          <div class="text-success">有効</div>
+        <% else %>
+          <div class="text-secondary">退会</div>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "編集する", edit_admin_customer_path(@customer), class: 'btn btn-success' %>

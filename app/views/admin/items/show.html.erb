@@ -1,19 +1,51 @@
-<h3>商品詳細</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-9">
+      <h3>商品詳細</h3>
+      <%= flash[:notice] %>
+      <%= image_tag @item.get_image(200,200) %>
+      <table>
+        <tbody>
+          <tr>
+            <td>商品名</td>
+            <td><strong><%= @item.name %></strong></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <td>税込価格</br>(税抜価格)</td>
+            <td><%= @item.with_tax_price %>(<%= @item.price %>)</td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
+            <td>
+              <% if @item.is_active == true %>
+                <div class="text-success">販売中</div>
+              <% else %>
+                <div class="text-secondary">販売停止中</div>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
- <%= image_tag @item.get_image(200,200) %> 
 
-  商品名
-  <%= @item.name %>
-  商品説明
-  <%= @item.introduction %>
-  ジャンル
-  <%= @item.genre.name %>
-  税込価格(税抜価格)
-  <%= @item.with_tax_price %>(<%= @item.price %>)
-  販売ステータス
-  <% if @item.is_active == true %>
-    販売中
-  <% else %>
-    販売停止中
-  <% end %>
+
+
+
+
+
+
+
+
   <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>

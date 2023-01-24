@@ -22,7 +22,7 @@ scope module: :public do
 end
 
 namespace :admin do
-  root to: 'homes#top'
+  root to: 'orders#index'
   resources :genres, only: [:index, :create, :edit, :update]
   get "items/search" => 'items#search'
   resources :items

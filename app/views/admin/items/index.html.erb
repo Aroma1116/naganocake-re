@@ -4,16 +4,35 @@
   <i class="fas fa-plus-circle"></i>
 <% end %>
 
-<% @items.each do |item| %>
-  <%= item.id %>
-  <%= link_to admin_item_path(item) do %>
-    <%= item.name %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="table-secondary">商品ID</th>
+      <th class="table-secondary">商品名</th>
+      <th class="table-secondary">税込価格</th>
+      <th class="table-secondary">ジャンル</th>
+      <th class="table-secondary">ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @items.each do |item| %>
+  <tr>
+    <td><%= item.id %></td>
+    <td>
+      <%= link_to admin_item_path(item) do %>
+        <%= item.name %>
+      <% end %>
+    </td>
+    <td><%= item.price %></td>
+    <td><%= item.genre.name %></td>
+    <td>
+      <% if item.is_active == true %>
+        <div class="text-success">販売中</div>
+      <% else %>
+        <div class="text-secondary">販売停止中</div>
+      <% end %>
+    </td>
+  </tr>
   <% end %>
-  <%= item.price %>
-  <%= item.genre.name %>
-  <% if item.is_active == true %>
-    販売中
-  <% else %>
-    販売停止中
-  <% end %>
-<% end %>
+  </tbody>
+</table>

@@ -27,10 +27,12 @@
           <li><%= link_to ' 注文履歴一覧', admin_orders_path,class: 'nav-link text-light' %></li>
           <li><%= link_to ' ジャンル一覧', admin_genres_path ,class: 'nav-link text-light'%></li>
           <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete,class: 'nav-link text-light' %></li>
-          <%= form_with url:admin_items_search_path, method: :get do |f| %>
-            <%= f.text_field :search %>
-            <% f.submit %>
-          <% end %>
+          <div>
+            <%= form_with url:admin_items_search_path, method: :get do |f| %>
+              <%= f.text_field :search, placeholder: "search" %>
+              <% f.submit %>
+            <% end %>
+          </div>
         <% else %>
           <li><%= link_to ' About',about_path,class: 'nav-link text-light' %></li>
           <li><%= link_to ' 商品一覧',items_path,class: 'nav-link text-light' %></li>

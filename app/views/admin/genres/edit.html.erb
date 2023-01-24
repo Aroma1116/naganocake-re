@@ -1,4 +1,5 @@
 <h2>ジャンル編集</h2>
+<%= render 'layouts/error', obj:@genre %>
 <%= form_with model:@genre, url:admin_genre_path(@genre), method: :patch do |f| %>
 
   <%= f.label :name, "ジャンル名" %>
