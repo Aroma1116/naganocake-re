@@ -8,6 +8,6 @@ class OrderDetail < ApplicationRecord
   end
 
   def subtotal
-    with_tax_price * amount
+    item.with_tax_price * amount
   end
 end

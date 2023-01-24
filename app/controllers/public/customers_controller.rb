@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
 
   def show
   end
@@ -7,8 +8,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    current_customer.update(customer_params)
-    redirect_to customers_my_page_path
+    if current_customer.update(customer_params)
+      flash[:notice] = "会員情報を更新しました"
+      redirect_to customers_my_page_path
+    else
+      render 'edit'
+    end
   end
 
   def unsubscribe

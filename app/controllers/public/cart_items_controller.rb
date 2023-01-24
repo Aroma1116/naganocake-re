@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     @cart_items = current_customer.cart_items
@@ -14,8 +15,13 @@ class Public::CartItemsController < ApplicationController
       @cart_item.destroy
       redirect_to cart_items_path
     else
-      @cart_item.save!
-      redirect_to cart_items_path
+      if @cart_item.save
+        redirect_to cart_items_path
+      else
+        @genres = Genre.all
+        @item = Item.find(params[:cart_item][:item_id])
+        render 'public/items/show'
+      end
     end
   end
 

@@ -1,4 +1,6 @@
 <h3>注文情報入力</h3>
+<h2 class="text-danger"><%= flash[:notice] %></h2>
+<%= render 'layouts/error', obj:@order %>
   <%= form_with model:@order, url: orders_confirm_path, method: :post do |f| %>
     <h4>支払方法</h4>
     <%= f.radio_button :payment_method,  Order.payment_methods.key(0) %>

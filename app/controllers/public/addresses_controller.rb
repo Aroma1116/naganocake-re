@@ -11,14 +11,23 @@ class Public::AddressesController < ApplicationController
 
   def create
     @address = current_customer.addresses.new(address_params)
-    @address.save
-    redirect_to addresses_path
+    if @address.save
+      flash[:notice] = "配送先を登録しました。"
+      redirect_to addresses_path
+    else
+      @addresses = Address.all
+      render 'index'
+    end
   end
 
   def update
     @address = Address.find(params[:id])
-    @address.update(address_params)
-    redirect_to addresses_path
+    if @address.update(address_params)
+      flash[:notice] = "配送先を更新しました。"
+      redirect_to addresses_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy

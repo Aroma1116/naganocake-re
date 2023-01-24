@@ -1,17 +1,63 @@
-<h3>商品一覧</h3>
+<div class="contaner">
+  <div class="row">
+    <div class="col-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td>
+            <%= link_to items_path(id: genre.id) do %>
+              <%= genre.name %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-9">
+      <% if @params %>
+        <h3><%= @genre.name %>一覧(全<%= @items.count %>件)</h3>
+        <div class="row">
+          <% @items.each do |item| %>
+            <%= link_to item_path(item) do %>
+            <div class="card" style="width: 15rem;">
+              <div class="card-img-top"><%= image_tag item.get_image(80,300) %></div>
+              <div class="card-body">
+                <div class="card-title"><%= item.name %></div>
+                <div class="card-text">￥<%= item.price %></div>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <h3>商品一覧(全<%= @items.count %>件)</h3>
+        <div class="row">
+          <% @items.each do |item| %>
+            <%= link_to item_path(item) do %>
+            <div class="card" style="width: 15rem;">
+              <div class="card-img-top"><%= image_tag item.get_image(80,300) %></div>
+              <div class="card-body">
+                <div class="card-title"><%= item.name %></div>
+                <div class="card-text">￥<%= item.price %></div>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<h4>ジャンル検索</h4>
-<% @genres.each do |genre| %>
-  <%= link_to items_path(id: genre.id) do %>
-    <%= genre.name %>
-  <% end %>
-<% end %>
 
-<% @items.each do |item| %>
-  <%= link_to item_path(item) do %>
-    <%= image_tag item.get_image(200,200) %>
-    <%= item.name %>
-    ￥<%= item.price %>
-  <% end %>
 
-<% end %>
+
+
+

@@ -1,7 +1,8 @@
-本当に退会しますか？
+<div class="text-center">
+  <strong>本当に退会しますか？</strong></br>
+  退会すると、会員登録情報やこれまでの購入履歴が閲覧できなくなります。</br>
+  退会する場合は、「退会する」をクリックしてください。</br>
+  <%= link_to "退会しない", customers_my_page_path, class: "btn btn-primary" %>
+  <%= link_to "退会する", customers_withdraw_path, method: :patch, data: { confirm: "【確認】退会してもよろしいですか？" }, class: "btn btn-danger" %>
+</div>
 
-退会すると、会員登録情報やこれまでの購入履歴が閲覧できなくなります。
-退会する場合は、「退会する」をクリックしてください。
-
-<%= link_to "退会しない", customers_my_page_path, class: "btn btn-primary" %>
-<%= link_to "退会する", customers_withdraw_path, method: :patch, data: { confirm: "【確認】退会してもよろしいですか？" }, class: "btn btn-danger" %>

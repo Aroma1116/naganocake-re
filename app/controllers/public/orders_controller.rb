@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
   before_action :cart_items_exists, only:[:new, :confirm]
 
   def new
@@ -20,6 +21,8 @@ class Public::OrdersController < ApplicationController
       @order.name = @address.name
     elsif params[:order][:select_address] == "2"
     else
+      flash[:notice] ="お届け先を選んでください。"
+      redirect_to new_order_path
     end
   end
 
@@ -41,14 +44,18 @@ class Public::OrdersController < ApplicationController
       @order_detail.save
       @cart_items.destroy_all
       redirect_to orders_thanks_path
+    else
+      render "new"
     end
 
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   private
@@ -58,6 +65,7 @@ class Public::OrdersController < ApplicationController
 
   def cart_items_exists
     unless current_customer.cart_items.exists?
+      flash[:notice] = "カートの中身が空です。カートに商品を追加してください。"
       redirect_to cart_items_path
     end
   end
