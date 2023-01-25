@@ -16,3 +16,33 @@ ja:
         wating_for_production: "製作待ち"
         in_production: "製作中"
         completion_of_production: "製作完了"
+  activerecord:
+    attributes:
+      customer:
+        email: "メールアドレス"
+        password: "パスワード"
+        last_name: "名字"
+        first_name: "名前"
+        last_name_kana: "名字（カナ）"
+        first_name_kana: "名前（カナ）"
+        postal_code: "郵便番号"
+        address: "住所"
+        telephone_number: "電話番号"
+      address:
+        postal_code: "郵便番号"
+        address: "住所"
+        name: "宛名"
+      cart_item:
+        amount: "数量"
+      order:
+        postal_code: "郵便番号"
+        address: "住所"
+        name: "宛名"
+      admin:
+        email: "メールアドレス"
+      item:
+        name: "商品名"
+        introduction: "商品説明文"
+        price: "価格"
+      genre:
+        name: "ジャンル名"

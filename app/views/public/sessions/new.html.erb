@@ -1,6 +1,11 @@
 <h2>ログイン</h2>
 <h4>会員の方はこちらからログイン</h4>
+<div class='login-flash-message'>
+  <%= flash[:notice] %>
+  <%= flash[:alert] %>
+</div>
 <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
+<%= render "layouts/error", obj: f.object %>
   <div class="container">
     <div class="row">
       <div class="field mb2">

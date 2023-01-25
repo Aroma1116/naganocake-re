@@ -1,6 +1,6 @@
 <h3>配送先編集</h3>
-<%= render 'layouts/error', obj:@address %>
 <%= form_with model:@address, url: address_path(@address), method: :patch do |f| %>
+<%= render 'layouts/error', obj: f.object %>
 <table>
   <tbody>
     <tr>

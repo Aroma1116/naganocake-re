@@ -1,4 +1,8 @@
 <h2>管理者ログイン</h2>
+<div class='login-flash-message'>
+  <%= flash[:notice] %>
+  <%= flash[:alert] %>
+</div>
 
 <%= form_with model:@admin, url: admin_session_path do |f| %>
   <div class="container">

@@ -1,3 +1,30 @@
+<% if @params %>
+<h3><%= @customer.last_name %><%= @customer.first_name %>さんの注文履歴</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="table-secondary">購入日時</th>
+      <th class="table-secondary">注文個数</th>
+      <th class="table-secondary">注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td>
+        <%= link_to admin_order_path(order) do %>
+          <%= order.created_at.to_s(:datetime_jp) %>
+        <% end %>
+      </td>
+      <td>
+        <%= order.order_details.sum(:amount) %>
+      </td>
+      <td><%= order.status_i18n %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
 <h3>注文履歴一覧</h3>
 <table class="table table-bordered">
   <thead>
@@ -25,3 +52,4 @@
     <% end %>
   </tbody>
 </table>
+<% end %>

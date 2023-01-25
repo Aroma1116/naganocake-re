@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-4"></div>
   <div class="col-8">
-    <%= render 'layouts/error', obj:@item %>
     <h3>商品編集</h3>
     <%= form_with model: @item, url:admin_item_path(@item), method: :patch do |f| %>
+    <%= render 'layouts/error', obj: f.object %>
 <table>
   <tbody>
     <tr>

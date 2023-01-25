@@ -2,23 +2,23 @@
 <table>
   <tbody>
     <tr>
-      <td>購入者</td>
+      <td><strong>購入者</strong></td>
       <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
     </tr>
     <tr>
-      <td>注文日</td>
+      <td><strong>注文日</strong></td>
       <td><%= @order.created_at %></td>
     </tr>
     <tr>
-      <td>配送先</td>
+      <td><strong>配送先</strong></td>
       <td><%= @order.address_display %></td>
     </tr>
     <tr>
-      <td>支払方法</td>
+      <td><strong>支払方法</strong></td>
       <td><%= @order.payment_method_i18n %></td>
     </tr>
     <tr>
-      <td>注文ステータス</td>
+      <td><strong>注文ステータス</strong></td>
       <td>
         <%= form_with model:@order, url: admin_order_path(@order), method: :patch do |f| %>
           <%= f.select :status, Order.statuses_i18n.keys.map{|k| [I18n.t("enums.order.status.#{k}"),k]} %>
@@ -28,14 +28,16 @@
     </tr>
   </tbody>
 </table>
+<div class="row">
+  <div class="col-9">
 <table>
   <thead>
     <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th>製作ステータス</th>
+      <th class="table-secondary">商品名</th>
+      <th class="table-secondary">単価（税込）</th>
+      <th class="table-secondary">数量</th>
+      <th class="table-secondary">小計</th>
+      <th class="table-secondary">製作ステータス</th>
     </tr>
   </thead>
   <tbody>
@@ -56,7 +58,8 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
+<div class="col-3">
 <table>
   <tbody>
     <tr>
@@ -73,3 +76,5 @@
     </tr>
   </tbody>
 </table>
+</div>
+</div>

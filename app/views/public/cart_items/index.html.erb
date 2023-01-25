@@ -1,6 +1,5 @@
 <h3>ショッピングカート</h3>
 <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, data: { confirm: "カートを空にしますか。" },class: "btn btn-danger" %>
-<%= flash[:notice] %>
 <table class="table">
   <thead class="thead-light">
     <tr>
